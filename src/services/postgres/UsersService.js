@@ -1,7 +1,5 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable linebreak-style */
 const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
 const bcrypt = require('bcrypt');
@@ -81,6 +79,16 @@ class UsersService {
       throw new AuthenticationError('Kredensial yang Anda berikan salah');
     }
     return id;
+  }
+
+  async getUsersByUsername(username) {
+    const query = {
+      text: 'SELECT id, username, fullname FROM users WHERE username LIKE $1',
+      values: [`%${username}%`],
+    };
+
+    const result = await this._pool.query(query);
+    return result.rows;
   }
 }
 

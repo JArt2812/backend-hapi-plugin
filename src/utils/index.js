@@ -1,7 +1,4 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable eol-last */
 /* eslint-disable camelcase */
-/* eslint-disable linebreak-style */
 const mapDBToModel = ({
   id,
   title,
@@ -9,6 +6,7 @@ const mapDBToModel = ({
   tags,
   created_at,
   updated_at,
+  username,
 }) => ({
   id,
   title,
@@ -16,6 +14,7 @@ const mapDBToModel = ({
   tags,
   createdAt: created_at,
   updatedAt: updated_at,
+  username,
 });
 
 module.exports = { mapDBToModel };
